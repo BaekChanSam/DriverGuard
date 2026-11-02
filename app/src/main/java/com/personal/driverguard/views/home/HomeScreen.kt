@@ -172,7 +172,11 @@ fun HomeScreen(
                             .padding(MaterialTheme.spacing.l),
                         horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.xl),
                     ) {
-                        Column(Modifier.weight(1f).fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
+                        // 오른쪽 목록이 화면보다 길어도 시작 버튼은 첫 화면 안에 둔다(왼쪽 열 높이를 화면 높이로 제한)
+                        Column(
+                            Modifier.weight(1f).heightIn(max = viewport - MaterialTheme.spacing.l * 2).fillMaxHeight(),
+                            verticalArrangement = Arrangement.SpaceBetween,
+                        ) {
                             Column { intro() }
                             Column(Modifier.padding(top = MaterialTheme.spacing.m)) { start() }
                         }
